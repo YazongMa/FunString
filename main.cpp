@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 
 #include "FunBase.h"
@@ -39,8 +40,49 @@ int Test2()
 }
 
 
+int test4(char* a[], int n)
+{
+  for(int i=0; i<n; ++i)
+  {
+    printf("%s\n", a[i]);
+  }
+
+  return n;
+}
+
+int Test3()
+{
+  char szArray[][12] = 
+  {
+    "abcd",
+    "dede",
+    "24342",
+    "f32f4w"
+  };
+
+  int n = sizeof(szArray) / sizeof(szArray[0]);
+  test4((char **)szArray, n);
+
+  unsigned long a = 0;
+  unsigned long b = 0;
+  
+  
+  return 0;  
+}
+
+
 int main()
 {
-  Test2();
+//  Test3();
+
+  char szUserInput[12] = { 0 };
+  strcpy(szUserInput, (char *)"##2");
+
+  
+  int nSelIndex = -1;
+  int nScanRet = -1;
+  nScanRet = sscanf((char *)szUserInput, "##%d", &nSelIndex);
+  printf("%d, %d\n", nScanRet, nSelIndex);
+
   return 0;
 }
